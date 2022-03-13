@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            padding: 40px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            display: flex;
+        }
+
+        input {
+            width: 300px;
+            padding: 0 10px;
+        }
+
+        button {
+            padding: 10px;
+            width: 100px;
+            margin-left: 10px;
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="#">
+        <input type="text" name="" id="inputText" placeholder="digite aqui o seu e-mail ou CPF">
+        <button disabled>OK</button>
+    </form>
+
+    <script>
+
+        const inputText = document.querySelector('#inputText');
+        const okBtn = document.querySelector('button');
+
+        const cpfRegex = /^([\d]{3})\.\1\.\1-[\d]{2}$/;
+        const emailRegex = /^[\w.-]+@[\w.-]+\.[\w]{2,}$/;
+
+        inputText.addEventListener('blur', () => {
+            console.log(inputText.value);
+            console.log(cpfRegex.test(inputText.value));
+            console.log(emailRegex.test(inputText.value));
+            // if (cpfRegex.test(inputText.value) || emailRegex.test(inputText.value)) {
+            //     okBtn.disabled = false;
+            // }
+            // else {
+            //     okBtn.disabled = true;
+            // }
+            okBtn.disabled = !(cpfRegex.test(inputText.value) || emailRegex.test(inputText.value));
+        })
+
+    </script>
+</body>
+</html>
